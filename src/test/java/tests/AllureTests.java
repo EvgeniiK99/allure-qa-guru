@@ -35,7 +35,7 @@ public class AllureTests extends TestBase {
     @Test
     void stepLambdaTest() {
         step("Open Main page", () -> open(baseUrl));
-        step("Find repository: {SEARCHVALUE}", () -> {
+        step("Find repository: " + SEARCHVALUE, () -> {
             headerSearch.click();
             headerSearch.setValue(SEARCHVALUE).pressEnter();
             selenideRepo.click();
@@ -44,7 +44,7 @@ public class AllureTests extends TestBase {
             issuesTab.shouldBe(visible);
             issuesTab.click();
         });
-        step("Check issue number: {ISSUENUMBER}");
+        step("Check issue number: " + ISSUENUMBER);
         $(withText(ISSUENUMBER)).should(exist);
     }
 

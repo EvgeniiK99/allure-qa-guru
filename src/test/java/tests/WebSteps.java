@@ -17,7 +17,7 @@ public class WebSteps {
         return this;
     }
 
-    @Step("Find repository")
+    @Step("Find repository: {repoName}")
     public WebSteps findRepo(String repoName) {
         headerSearch.click();
         headerSearch.setValue(repoName).pressEnter();
@@ -32,7 +32,7 @@ public class WebSteps {
         return this;
     }
 
-    @Step("Check issue number: {ISSUENUMBER}")
+    @Step("Check issue number: {issueNumber}")
     public WebSteps checkIssueNumber(String issueNumber) {
         $(withText(issueNumber)).should(exist);
         return this;
