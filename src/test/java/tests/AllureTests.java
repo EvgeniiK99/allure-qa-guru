@@ -12,8 +12,8 @@ import static io.qameta.allure.Allure.step;
 
 public class AllureTests extends TestBase {
     public static final String
-            SEARCHVALUE = "selenide",
-            ISSUENUMBER = "2355";
+            SEARCH_VALUE = "selenide",
+            ISSUE_NUMBER = "2355";
     public static SelenideElement
             headerSearch = $(".header-search-input"),
             issuesTab = $("#issues-tab"),
@@ -23,29 +23,29 @@ public class AllureTests extends TestBase {
     void onlySelenideTest() {
         open(baseUrl);
         headerSearch.click();
-        headerSearch.setValue(SEARCHVALUE).pressEnter();
+        headerSearch.setValue(SEARCH_VALUE).pressEnter();
         selenideRepo.click();
 
         issuesTab.shouldBe(visible);
         issuesTab.click();
 
-        $(withText(ISSUENUMBER)).should(exist);
+        $(withText(ISSUE_NUMBER)).should(exist);
     }
 
     @Test
     void stepLambdaTest() {
         step("Open Main page", () -> open(baseUrl));
-        step("Find repository: " + SEARCHVALUE, () -> {
+        step("Find repository: " + SEARCH_VALUE, () -> {
             headerSearch.click();
-            headerSearch.setValue(SEARCHVALUE).pressEnter();
+            headerSearch.setValue(SEARCH_VALUE).pressEnter();
             selenideRepo.click();
         });
         step("Select Tab: Issue", () -> {
             issuesTab.shouldBe(visible);
             issuesTab.click();
         });
-        step("Check issue number: " + ISSUENUMBER, () -> {
-            $(withText(ISSUENUMBER)).should(exist);
+        step("Check issue number: " + ISSUE_NUMBER, () -> {
+            $(withText(ISSUE_NUMBER)).should(exist);
         });
     }
 
@@ -54,8 +54,8 @@ public class AllureTests extends TestBase {
         WebSteps webSteps = new WebSteps();
         webSteps
                 .openMainPage()
-                .findRepo(SEARCHVALUE)
+                .findRepo(SEARCH_VALUE)
                 .selectTab()
-                .checkIssueNumber(ISSUENUMBER);
+                .checkIssueNumber(ISSUE_NUMBER);
     }
 }
