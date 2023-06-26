@@ -34,17 +34,17 @@ public class AllureTests extends TestBase {
 
     @Test
     void stepLambdaTest() {
-        step("Открыть главную сстраницу ", () -> open(baseUrl));
-        step("Найти репозиторий через поиск: {SEARCHVALUE}", () -> {
+        step("Open Main page", () -> open(baseUrl));
+        step("Find repository: {SEARCHVALUE}", () -> {
             headerSearch.click();
             headerSearch.setValue(SEARCHVALUE).pressEnter();
             selenideRepo.click();
         });
-        step("Переход на вкладку Issue", () -> {
+        step("Select Tab: Issue", () -> {
             issuesTab.shouldBe(visible);
             issuesTab.click();
         });
-        step("Проверка, что существует issue {ISSUENUMBER}");
+        step("Check issue number: {ISSUENUMBER}");
         $(withText(ISSUENUMBER)).should(exist);
     }
 

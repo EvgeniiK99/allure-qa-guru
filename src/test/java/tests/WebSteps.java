@@ -11,13 +11,13 @@ import static com.codeborne.selenide.Selenide.open;
 import static tests.AllureTests.*;
 
 public class WebSteps {
-    @Step("Открыть главную страницу")
+    @Step("Open Main page")
     public WebSteps openMainPage() {
         open(baseUrl);
         return this;
     }
 
-    @Step("Найти репозиторий через поиск")
+    @Step("Find repository")
     public WebSteps findRepo(String repoName) {
         headerSearch.click();
         headerSearch.setValue(repoName).pressEnter();
@@ -25,14 +25,14 @@ public class WebSteps {
         return this;
     }
 
-    @Step("Переход на вкладку Issue")
+    @Step("Select Tab: Issue")
     public WebSteps selectTab() {
         issuesTab.shouldBe(visible);
         issuesTab.click();
         return this;
     }
 
-    @Step("Проверка, что существует issue {ISSUENUMBER}")
+    @Step("Check issue number: {ISSUENUMBER}")
     public WebSteps checkIssueNumber(String issueNumber) {
         $(withText(issueNumber)).should(exist);
         return this;
