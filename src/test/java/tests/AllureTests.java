@@ -44,8 +44,9 @@ public class AllureTests extends TestBase {
             issuesTab.shouldBe(visible);
             issuesTab.click();
         });
-        step("Check issue number: " + ISSUENUMBER);
-        $(withText(ISSUENUMBER)).should(exist);
+        step("Check issue number: " + ISSUENUMBER, () -> {
+            $(withText(ISSUENUMBER)).should(exist);
+        });
     }
 
     @Test
