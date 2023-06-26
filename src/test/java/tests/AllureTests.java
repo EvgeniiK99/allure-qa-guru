@@ -1,8 +1,6 @@
 package tests;
 
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.logevents.SelenideLogger;
-import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.*;
@@ -36,9 +34,7 @@ public class AllureTests extends TestBase {
 
     @Test
     void stepLambdaTest() {
-        step("Открыть главную сстраницу ", () -> {
-            open(baseUrl);
-        });
+        step("Открыть главную сстраницу ", () -> open(baseUrl));
         step("Найти репозиторий через поиск: {SEARCHVALUE}", () -> {
             headerSearch.click();
             headerSearch.setValue(SEARCHVALUE).pressEnter();
